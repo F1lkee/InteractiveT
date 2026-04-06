@@ -1,0 +1,206 @@
+<Window x:Class="InteractiveTWPF.TeacherDashboardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InteractiveTWPF"
+        xmlns:converters="clr-namespace:InteractiveTWPF.Converters"
+        mc:Ignorable="d"
+        Title="Кабинет учителя"
+        Height="750" Width="1100"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource BackgroundBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Шапка -->
+        <Border Background="{StaticResource AccentBrush}" Padding="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <TextBlock x:Name="WelcomeTextBlock"
+                               Text="Добро пожаловать, учитель!"
+                               FontSize="24"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+                    <TextBlock x:Name="SubjectsInfoTextBlock"
+                               Text="Предметы и классы"
+                               FontSize="14"
+                               Foreground="#DDFFFFFF"
+                               Margin="0,5,0,0"/>
+                </StackPanel>
+
+                <Button Grid.Column="1"
+                        Content="Выйти"
+                        Click="LogoutButton_Click"
+                        Background="#33FFFFFF"
+                        Foreground="White"
+                        Padding="20,10"
+                        BorderThickness="0"/>
+            </Grid>
+        </Border>
+
+        <!-- Вкладки навигации -->
+        <TabControl x:Name="MainTabControl" Grid.Row="1" Margin="10,10,10,0">
+            <TabItem Header="📝 Мои тесты">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                        <Button x:Name="CreateTestButton"
+                                Content="+ Создать тест"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Click="CreateTestButton_Click"
+                                Width="150"/>
+                        <Button x:Name="RefreshTestsButton"
+                                Content="🔄 Обновить"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Click="RefreshTestsButton_Click"
+                                Margin="10,0,0,0"
+                                Background="#7F8C8D"/>
+                    </StackPanel>
+
+                    <DataGrid x:Name="TestsDataGrid"
+                              Grid.Row="1"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              Background="{StaticResource CardBrush}"
+                              BorderThickness="0"
+                              RowBackground="{StaticResource CardBrush}"
+                              AlternatingRowBackground="#FFF8F9FA"
+                              GridLinesVisibility="Horizontal"
+                              HeadersVisibility="Column"
+                              CanUserResizeRows="False"
+                              SelectionMode="Single"
+                              MouseDoubleClick="TestsDataGrid_MouseDoubleClick">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Название" Binding="{Binding Title}" Width="2*"/>
+                            <DataGridTextColumn Header="Предмет" Binding="{Binding Subject.Name}" Width="*"/>
+                            <DataGridTextColumn Header="Вопросов" Binding="{Binding Questions.Count}" Width="Auto"/>
+                            <DataGridTextColumn Header="Попыток" Binding="{Binding Attempts.Count}" Width="Auto"/>
+                            <DataGridCheckBoxColumn Header="Опубликован" Binding="{Binding IsPublished}" Width="Auto"/>
+                            <DataGridTextColumn Header="Создан" Binding="{Binding CreatedAt, StringFormat=dd.MM.yyyy}" Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="📚 Предметы">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                        <Button x:Name="AddSubjectButton"
+                                Content="+ Добавить предмет"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Click="AddSubjectButton_Click"
+                                Width="180"/>
+                    </StackPanel>
+
+                    <DataGrid x:Name="SubjectsDataGrid"
+                              Grid.Row="1"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              Background="{StaticResource CardBrush}"
+                              BorderThickness="0"
+                              RowBackground="{StaticResource CardBrush}"
+                              AlternatingRowBackground="#FFF8F9FA"
+                              GridLinesVisibility="Horizontal">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Название предмета" Binding="{Binding Name}" Width="*"/>
+                            <DataGridTextColumn Header="Тестов" Binding="{Binding Tests.Count}" Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="🏫 Классы">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                        <Button x:Name="AddClassButton"
+                                Content="+ Добавить класс"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Click="AddClassButton_Click"
+                                Width="170"/>
+                    </StackPanel>
+
+                    <DataGrid x:Name="ClassesDataGrid"
+                              Grid.Row="1"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              Background="{StaticResource CardBrush}"
+                              BorderThickness="0"
+                              RowBackground="{StaticResource CardBrush}"
+                              AlternatingRowBackground="#FFF8F9FA"
+                              GridLinesVisibility="Horizontal">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Класс" Binding="{Binding Name}" Width="*"/>
+                            <DataGridTextColumn Header="Уровень" Binding="{Binding GradeLevel}" Width="Auto"/>
+                            <DataGridTextColumn Header="Учеников" Binding="{Binding Students.Count}" Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="📊 Результаты">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                        <TextBlock Text="Результаты прохождения тестов учениками"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   Foreground="{StaticResource TextPrimaryBrush}"/>
+                    </StackPanel>
+
+                    <DataGrid x:Name="ResultsDataGrid"
+                              Grid.Row="1"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              Background="{StaticResource CardBrush}"
+                              BorderThickness="0"
+                              RowBackground="{StaticResource CardBrush}"
+                              AlternatingRowBackground="#FFF8F9FA"
+                              GridLinesVisibility="Horizontal">
+                        <DataGrid.Resources>
+                            <converters:ScoreDisplayConverter x:Key="ScoreDisplayConverter"/>
+                            <converters:StatusDisplayConverter x:Key="StatusDisplayConverter"/>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Ученик" Binding="{Binding User.FullName}" Width="*"/>
+                            <DataGridTextColumn Header="Тест" Binding="{Binding Test.Title}" Width="*"/>
+                            <DataGridTextColumn Header="Дата начала" Binding="{Binding StartedAt, StringFormat=dd.MM.yyyy HH:mm}" Width="Auto"/>
+                            <DataGridTextColumn Header="Результат" Binding="{Binding Converter={StaticResource ScoreDisplayConverter}}" Width="Auto"/>
+                            <DataGridTextColumn Header="Статус" Binding="{Binding Converter={StaticResource StatusDisplayConverter}}" Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
