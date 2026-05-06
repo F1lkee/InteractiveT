@@ -176,6 +176,12 @@
                                    FontSize="18"
                                    FontWeight="SemiBold"
                                    Foreground="{StaticResource TextPrimaryBrush}"/>
+                        <Button x:Name="ExportToExcelButton"
+                                Content="📄 Экспорт в Excel"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Click="ExportToExcelButton_Click"
+                                Margin="20,0,0,0"
+                                Width="150"/>
                     </StackPanel>
 
                     <DataGrid x:Name="ResultsDataGrid"
