@@ -2,7 +2,6 @@ using InteractiveT.Core.Enum;
 using InteractiveT.Core.Models;
 using InteractiveT.Infrastructure.Data;
 using InteractiveT.Infrastructure.Services;
-using InteractiveTWPF.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -239,18 +238,6 @@ namespace InteractiveTWPF
             {
                 await LoadClassesAsync();
             }
-        }
-
-        private void ExportToExcelButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_results == null || _results.Count == 0)
-            {
-                MessageBox.Show("Нет данных для экспорта. Сначала загрузите результаты тестов.", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            var exportService = new ExcelExportService();
-            exportService.ExportTestAttemptsToExcelWithDialog(_results.ToList());
         }
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)

@@ -143,9 +143,6 @@
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.3\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="EPPlus, Version=5.8.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
-      <HintPath>..\packages\EPPlus.5.8.0\lib\net46\EPPlus.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualBasic" />
@@ -210,7 +207,6 @@
     <Compile Include="Views\Dashboards\TeacherDashboardWindow.xaml.cs">
       <DependentUpon>TeacherDashboardWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Services\ExcelExportService.cs" />
     <Compile Include="Views\Tests\TestTakingWindow.xaml.cs">
       <DependentUpon>TestTakingWindow.xaml</DependentUpon>
     </Compile>
