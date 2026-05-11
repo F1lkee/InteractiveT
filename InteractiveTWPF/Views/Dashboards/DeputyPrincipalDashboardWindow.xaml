@@ -12,12 +12,10 @@
         Background="{StaticResource BackgroundBrush}">
 
     <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../Resources/Colors.xaml"/>
-                <ResourceDictionary Source="../../Resources/Styles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="../../Resources/Colors.xaml"/>
+            <ResourceDictionary Source="../../Resources/Styles.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
         <converters:ScoreDisplayConverter x:Key="ScoreDisplayConverter"/>
         <converters:StatusDisplayConverter x:Key="StatusDisplayConverter"/>
     </Window.Resources>
