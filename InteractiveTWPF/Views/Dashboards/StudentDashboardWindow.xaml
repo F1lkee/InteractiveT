@@ -10,6 +10,15 @@
     WindowStartupLocation="CenterScreen"
     Background="{StaticResource BackgroundBrush}">
 
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Resources/Colors.xaml"/>
+                <ResourceDictionary Source="../../Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

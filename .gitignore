@@ -1,56 +1,48 @@
-```xaml
-# Build outputs
+```
+# Compiled and build artifacts
+*.exe
+*.dll
+*.pdb
+*.userprefs
+*.cache
 bin/
 obj/
 Debug/
 Release/
-*.exe
-*.dll
-*.pdb
-*.nupkg
 
 # Dependencies
 packages/
 node_modules/
+.nuget/
+.nuget.packages/
 
-# Logs
+# Logs and temp files
 *.log
+*.tmp
+*.temp
+*.cache
 
-# User-specific files
-*.user
-*.userosscache
-*.suo
-*.userprefs
-
-# Environment specific settings
+# Environment
 .env
 .env.local
 *.env.*
+
+# Editors
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
 # OS generated files
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# Visual Studio files
-.vs/
-*.VC.db
-*.VC.VC.opendb
-
-# ReSharper files
-_ReSharper*/
-*.[Rr]e[Ss]harper
-*.DotSettings.user
-
-# Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
+# Build outputs
+dist/
 build/
-bld/
-[Bb]in/
-[Oo]bj/
+target/
+out/
 ```
