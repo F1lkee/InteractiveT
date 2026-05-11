@@ -6,49 +6,74 @@
         xmlns:local="clr-namespace:InteractiveTWPF"
         mc:Ignorable="d"
             Title="Система тестирования - Вход" 
-    Height="500" Width="400"
+    Height="600" Width="450"
     WindowStartupLocation="CenterScreen"
     Background="{StaticResource BackgroundBrush}"
     ResizeMode="NoResize">
 
     <Grid>
+        <!-- Декоративный фон с градиентом -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#F5F7FA" Offset="0"/>
+                <GradientStop Color="#E0E7FF" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
         <Border Style="{StaticResource CardStyle}" 
             VerticalAlignment="Center" 
             HorizontalAlignment="Center"
-            Width="320">
+            Width="360">
             <StackPanel>
-                <TextBlock Text="🔐 Вход в систему" 
-                      FontSize="24" 
+                <!-- Логотип / Иконка -->
+                <Border Background="{StaticResource AccentGradientBrush}"
+                        CornerRadius="50"
+                        Width="80"
+                        Height="80"
+                        HorizontalAlignment="Center"
+                        Margin="0,0,0,20"
+                        Effect="{StaticResource MediumShadow}">
+                    <TextBlock Text="📝" 
+                              FontSize="40" 
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"/>
+                </Border>
+
+                <TextBlock Text="Добро пожаловать!" 
+                      FontSize="26" 
                       FontWeight="Bold"
                       Foreground="{StaticResource TextPrimaryBrush}"
+                      HorizontalAlignment="Center"
+                      Margin="0,0,0,5"/>
+                
+                <TextBlock Text="Войдите для продолжения" 
+                      FontSize="14"
+                      Foreground="{StaticResource TextSecondaryBrush}"
                       HorizontalAlignment="Center"
                       Margin="0,0,0,30"/>
 
                 <TextBlock Text="Логин" 
                       Foreground="{StaticResource TextSecondaryBrush}"
-                      Margin="0,0,0,5"/>
+                      FontWeight="Medium"
+                      Margin="0,0,0,8"/>
                 <TextBox x:Name="LoginTextBox" 
                     Style="{StaticResource ModernTextBoxStyle}"
-                    Margin="0,0,0,15"/>
+                    Margin="0,0,0,20"/>
 
                 <TextBlock Text="Пароль" 
                       Foreground="{StaticResource TextSecondaryBrush}"
-                      Margin="0,0,0,5"/>
+                      FontWeight="Medium"
+                      Margin="0,0,0,8"/>
                 <PasswordBox x:Name="PasswordBox"
-                        Background="{StaticResource CardBrush}"
-                        Foreground="{StaticResource TextPrimaryBrush}"
-                        BorderBrush="{StaticResource TextSecondaryBrush}"
-                        Padding="12,8"
-                        FontSize="14"
+                        Style="{StaticResource ModernPasswordBoxStyle}"
                         Margin="0,0,0,25"/>
 
                 <Button x:Name="LoginButton"
-                    Content="Войти"
+                    Content="Войти в систему"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Click="LoginButton_Click"
-                    Height="45"
-                    FontSize="14"
-                    FontWeight="SemiBold"/>
+                    Height="50"
+                    FontSize="15"/>
 
                 <TextBlock x:Name="ErrorTextBlock"
                       Foreground="{StaticResource ErrorBrush}"
