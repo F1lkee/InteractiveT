@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="InteractiveT.Core.Models.Answer">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAACAAQAAAAAAAAAAEAAIACAQAAAA=</HashCode>
+      <FileName>Core\Models\Answer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InteractiveT.Core.Models.Class">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAACAAAAQAAAAAAAAAAIAAIAAAAQA=</HashCode>
+      <FileName>Core\Models\Class.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InteractiveT.Core.Models.Question">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAgAAQACAEQIAAAAAAAAAAQQAACAAAAAA=</HashCode>
+      <FileName>Core\Models\Question.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InteractiveT.Core.Models.StudentAnswer">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAAAAgAAAAAAAAAAAAQAAAAAAQEAEIAQAQAgAA=</HashCode>
+      <FileName>Core\Models\StudentAnswer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InteractiveT.Core.Models.Subject">
+    <Position X="3.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAGAAAAAAAAAAAAACAAAAQAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Core\Models\Subject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InteractiveT.Core.Models.TeacherSubjectClass">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAgEAAAAAAAAIIACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Models\TeacherSubjectClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InteractiveT.Core.Models.Test">
+    <Position X="6.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKAAAoEAAkCEABgKIAAAAAIAAhAAAEABAEBBEAAAA=</HashCode>
+      <FileName>Core\Models\Test.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InteractiveT.Core.Models.TestAttempt">
+    <Position X="8.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAALAAAAAAAAAAgAABAMAAgAAAAAABAAQAQACAAAAAA=</HashCode>
+      <FileName>Core\Models\TestAttempt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InteractiveT.Core.Models.User">
+    <Position X="3.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCgAAAAAAAAIAAECAAAAAAAAAAAAAAAIASAAEAAQA=</HashCode>
+      <FileName>Core\Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InteractiveT.Core.Models.UserClass">
+    <Position X="5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAgAAAAAAAAAAIAAAgAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Core\Models\UserClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InteractiveT.Core.Models.UserSubject">
+    <Position X="5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAEAAAAAAAAIAAAAgAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Core\Models\UserSubject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InteractiveT.Infrastructure.Data.ApplicationDbContext">
+    <Position X="10.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAGCAASEAAAAQAAAAAAAAEAAAAAAEQIAAAAAEAAA=</HashCode>
+      <FileName>Infrastructure\Data\ApplicationContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InteractiveT.Infrastructure.Services.AIService">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAACAgAAAAAABAAAAAAAAAAAAACEIAAgAAAAAA=</HashCode>
+      <FileName>Infrastructure\Services\AIService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InteractiveT.Infrastructure.Services.GeneratedQuestion">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAQQAACAAAAAA=</HashCode>
+      <FileName>Infrastructure\Services\AIService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InteractiveT.Infrastructure.Services.GeneratedAnswer">
+    <Position X="10.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIACAAAAAA=</HashCode>
+      <FileName>Infrastructure\Services\AIService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InteractiveT.Infrastructure.Services.AuthService">
+    <Position X="12" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAIAEBAAAAEAAAAIAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Services\AuthService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InteractiveT.Infrastructure.Services.TestService">
+    <Position X="12" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABEAAEAAAAAAAAAAAAAAAABACAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Services\TestService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="InteractiveT.Core.Enum.QuestionType">
+    <Position X="3.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAEEAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Core\Enum\QuestionType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="InteractiveT.Core.Enum.TestAccessMode">
+    <Position X="5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAEAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Core\Enum\TestAccessMode.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="InteractiveT.Core.Enum.UserRole">
+    <Position X="8.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAQAAAAAAAAAAAAQAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Enum\UserRole.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
