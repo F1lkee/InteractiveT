@@ -18,8 +18,15 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Шапка -->
-        <Border Background="{StaticResource ErrorBrush}" Padding="20">
+        <!-- Шапка с градиентом -->
+        <Border Padding="20">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#6366F1" Offset="0"/>
+                    <GradientStop Color="#8B5CF6" Offset="0.5"/>
+                    <GradientStop Color="#EC4899" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -29,58 +36,103 @@
                 <StackPanel>
                     <TextBlock x:Name="WelcomeTextBlock"
                                Text="Панель администратора"
-                               FontSize="24"
+                               FontSize="26"
                                FontWeight="Bold"
                                Foreground="White"/>
                     <TextBlock x:Name="StatsTextBlock"
                                Text="Загрузка статистики..."
                                FontSize="14"
-                               Foreground="#DDFFFFFF"
+                               Foreground="#E0E7FF"
                                Margin="0,5,0,0"/>
                 </StackPanel>
 
                 <Button Grid.Column="1"
-                        Content="Выйти"
+                        Content="🚪 Выйти"
                         Click="LogoutButton_Click"
-                        Background="#33FFFFFF"
+                        Background="#FFFFFF20"
                         Foreground="White"
-                        Padding="20,10"
-                        BorderThickness="0"/>
+                        Padding="20,12"
+                        BorderThickness="0"
+                        FontSize="14"
+                        FontWeight="SemiBold"
+                        Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                                    CornerRadius="10"
+                                    Padding="{TemplateBinding Padding}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FFFFFF20"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FFFFFF40"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </Grid>
         </Border>
 
-        <!-- Вкладки -->
-        <TabControl x:Name="MainTabControl" Grid.Row="1" Margin="10,10,10,0">
+        <!-- Вкладки с современным стилем -->
+        <TabControl x:Name="MainTabControl" Grid.Row="1" Margin="20,20,20,0" Style="{StaticResource ModernTabControlStyle}">
             <!-- Пользователи -->
-            <TabItem Header="👥 Пользователи">
-                <Grid Margin="15">
+            <TabItem Header="👥 Пользователи" Style="{StaticResource ModernTabItemStyle}">
+                <Grid Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
-                        <Button Content="+ Добавить пользователя"
+                        <Button Content="➕ Добавить пользователя"
                                 Style="{StaticResource PrimaryButtonStyle}"
                                 Click="AddUserButton_Click"
-                                Width="180"/>
+                                Width="200"/>
                         <Button Content="🔄 Обновить"
-                                Style="{StaticResource PrimaryButtonStyle}"
                                 Click="RefreshUsersButton_Click"
                                 Margin="10,0,0,0"
                                 Background="#7F8C8D"
-                                Width="120"/>
+                                Width="130"
+                                Foreground="White"
+                                Padding="16,12"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                FontSize="14"
+                                FontWeight="SemiBold">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" 
+                                            CornerRadius="10"
+                                            Padding="{TemplateBinding Padding}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Opacity" Value="0.9"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Opacity" Value="1"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
                     </StackPanel>
 
                     <DataGrid x:Name="UsersDataGrid"
                               Grid.Row="1"
                               AutoGenerateColumns="False"
                               IsReadOnly="True"
-                              Background="{StaticResource CardBrush}"
-                              BorderThickness="0"
-                              RowBackground="{StaticResource CardBrush}"
-                              AlternatingRowBackground="#FFF8F9FA"
-                              GridLinesVisibility="Horizontal">
+                              Style="{StaticResource ModernDataGridStyle}"
+                              CanUserAddRows="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ФИО" Binding="{Binding FullName}" Width="*"/>
                             <DataGridTextColumn Header="Логин" Binding="{Binding Login}" Width="Auto"/>
@@ -94,17 +146,11 @@
                                             <Button Content="✏️"
                                                     Click="EditUserButton_Click"
                                                     Margin="5,0"
-                                                    Background="Transparent"
-                                                    BorderThickness="0"
-                                                    Foreground="{StaticResource AccentBrush}"
-                                                    Cursor="Hand"/>
+                                                    Style="{StaticResource IconButtonStyle}"/>
                                             <Button Content="🗑️"
                                                     Click="DeleteUserButton_Click"
                                                     Margin="5,0"
-                                                    Background="Transparent"
-                                                    BorderThickness="0"
-                                                    Foreground="{StaticResource ErrorBrush}"
-                                                    Cursor="Hand"/>
+                                                    Style="{StaticResource IconButtonStyle}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -115,29 +161,26 @@
             </TabItem>
 
             <!-- Предметы -->
-            <TabItem Header="📚 Предметы">
-                <Grid Margin="15">
+            <TabItem Header="📚 Предметы" Style="{StaticResource ModernTabItemStyle}">
+                <Grid Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
-                        <Button Content="+ Добавить предмет"
+                        <Button Content="➕ Добавить предмет"
                                 Style="{StaticResource PrimaryButtonStyle}"
                                 Click="AddSubjectButton_Click"
-                                Width="180"/>
+                                Width="200"/>
                     </StackPanel>
 
                     <DataGrid x:Name="SubjectsDataGrid"
                               Grid.Row="1"
                               AutoGenerateColumns="False"
                               IsReadOnly="True"
-                              Background="{StaticResource CardBrush}"
-                              BorderThickness="0"
-                              RowBackground="{StaticResource CardBrush}"
-                              AlternatingRowBackground="#FFF8F9FA"
-                              GridLinesVisibility="Horizontal">
+                              Style="{StaticResource ModernDataGridStyle}"
+                              CanUserAddRows="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*"/>
                             <DataGridTextColumn Header="Тестов" Binding="{Binding Tests.Count}" Width="Auto"/>
@@ -148,29 +191,26 @@
             </TabItem>
 
             <!-- Классы -->
-            <TabItem Header="🏫 Классы">
-                <Grid Margin="15">
+            <TabItem Header="🏫 Классы" Style="{StaticResource ModernTabItemStyle}">
+                <Grid Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
-                        <Button Content="+ Добавить класс"
+                        <Button Content="➕ Добавить класс"
                                 Style="{StaticResource PrimaryButtonStyle}"
                                 Click="AddClassButton_Click"
-                                Width="170"/>
+                                Width="180"/>
                     </StackPanel>
 
                     <DataGrid x:Name="ClassesDataGrid"
                               Grid.Row="1"
                               AutoGenerateColumns="False"
                               IsReadOnly="True"
-                              Background="{StaticResource CardBrush}"
-                              BorderThickness="0"
-                              RowBackground="{StaticResource CardBrush}"
-                              AlternatingRowBackground="#FFF8F9FA"
-                              GridLinesVisibility="Horizontal">
+                              Style="{StaticResource ModernDataGridStyle}"
+                              CanUserAddRows="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*"/>
                             <DataGridTextColumn Header="Уровень" Binding="{Binding GradeLevel}" Width="Auto"/>
@@ -182,12 +222,12 @@
             </TabItem>
 
             <!-- Статистика системы -->
-            <TabItem Header="📊 Статистика">
-                <ScrollViewer Margin="15">
+            <TabItem Header="📊 Статистика" Style="{StaticResource ModernTabItemStyle}">
+                <ScrollViewer Margin="10">
                     <StackPanel>
                         <TextBlock Text="Общая статистика системы"
-                                   FontSize="20"
-                                   FontWeight="SemiBold"
+                                   FontSize="22"
+                                   FontWeight="Bold"
                                    Foreground="{StaticResource TextPrimaryBrush}"
                                    Margin="0,0,0,20"/>
 
@@ -199,60 +239,64 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Border Style="{StaticResource CardStyle}" Grid.Column="0" Margin="5">
+                            <Border Style="{StaticResource StatCardStyle}" Grid.Column="0">
                                 <StackPanel HorizontalAlignment="Center">
-                                    <TextBlock Text="👥" FontSize="32" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="👥" FontSize="40" HorizontalAlignment="Center"/>
                                     <TextBlock x:Name="TotalUsersTextBlock"
                                                Text="0"
-                                               FontSize="28"
+                                               FontSize="32"
                                                FontWeight="Bold"
                                                Foreground="{StaticResource AccentBrush}"
-                                               HorizontalAlignment="Center"/>
+                                               HorizontalAlignment="Center"
+                                               Margin="0,10,0,5"/>
                                     <TextBlock Text="Пользователей"
                                                Foreground="{StaticResource TextSecondaryBrush}"
                                                HorizontalAlignment="Center"/>
                                 </StackPanel>
                             </Border>
 
-                            <Border Style="{StaticResource CardStyle}" Grid.Column="1" Margin="5">
+                            <Border Style="{StaticResource StatCardStyle}" Grid.Column="1">
                                 <StackPanel HorizontalAlignment="Center">
-                                    <TextBlock Text="📝" FontSize="32" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="📝" FontSize="40" HorizontalAlignment="Center"/>
                                     <TextBlock x:Name="TotalTestsTextBlock"
                                                Text="0"
-                                               FontSize="28"
+                                               FontSize="32"
                                                FontWeight="Bold"
                                                Foreground="{StaticResource SuccessBrush}"
-                                               HorizontalAlignment="Center"/>
+                                               HorizontalAlignment="Center"
+                                               Margin="0,10,0,5"/>
                                     <TextBlock Text="Тестов"
                                                Foreground="{StaticResource TextSecondaryBrush}"
                                                HorizontalAlignment="Center"/>
                                 </StackPanel>
                             </Border>
 
-                            <Border Style="{StaticResource CardStyle}" Grid.Column="2" Margin="5">
+                            <Border Style="{StaticResource StatCardStyle}" Grid.Column="2">
                                 <StackPanel HorizontalAlignment="Center">
-                                    <TextBlock Text="📚" FontSize="32" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="📚" FontSize="40" HorizontalAlignment="Center"/>
                                     <TextBlock x:Name="TotalSubjectsTextBlock"
                                                Text="0"
-                                               FontSize="28"
+                                               FontSize="32"
                                                FontWeight="Bold"
                                                Foreground="{StaticResource WarningBrush}"
-                                               HorizontalAlignment="Center"/>
+                                               HorizontalAlignment="Center"
+                                               Margin="0,10,0,5"/>
                                     <TextBlock Text="Предметов"
                                                Foreground="{StaticResource TextSecondaryBrush}"
                                                HorizontalAlignment="Center"/>
                                 </StackPanel>
                             </Border>
 
-                            <Border Style="{StaticResource CardStyle}" Grid.Column="3" Margin="5">
+                            <Border Style="{StaticResource StatCardStyle}" Grid.Column="3">
                                 <StackPanel HorizontalAlignment="Center">
-                                    <TextBlock Text="✅" FontSize="32" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="✅" FontSize="40" HorizontalAlignment="Center"/>
                                     <TextBlock x:Name="TotalAttemptsTextBlock"
                                                Text="0"
-                                               FontSize="28"
+                                               FontSize="32"
                                                FontWeight="Bold"
-                                               Foreground="{StaticResource TextPrimaryBrush}"
-                                               HorizontalAlignment="Center"/>
+                                               Foreground="{StaticResource InfoBrush}"
+                                               HorizontalAlignment="Center"
+                                               Margin="0,10,0,5"/>
                                     <TextBlock Text="Попыток"
                                                Foreground="{StaticResource TextSecondaryBrush}"
                                                HorizontalAlignment="Center"/>
@@ -261,10 +305,10 @@
                         </Grid>
 
                         <TextBlock Text="Распределение по ролям"
-                                   FontSize="16"
-                                   FontWeight="SemiBold"
+                                   FontSize="18"
+                                   FontWeight="Bold"
                                    Foreground="{StaticResource TextPrimaryBrush}"
-                                   Margin="0,20,0,10"/>
+                                   Margin="0,30,0,15"/>
 
                         <ItemsControl x:Name="RoleStatsItemsControl">
                             <ItemsControl.ItemTemplate>
@@ -276,10 +320,10 @@
                                                 <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Text="{Binding RoleName}"
-                                                       FontSize="14"
+                                                       FontSize="15"
                                                        FontWeight="SemiBold"/>
                                             <TextBlock Text="{Binding Count}"
-                                                       FontSize="18"
+                                                       FontSize="20"
                                                        FontWeight="Bold"
                                                        Foreground="{StaticResource AccentBrush}"
                                                        Grid.Column="1"/>
