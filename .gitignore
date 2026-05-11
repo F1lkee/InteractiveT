@@ -3,8 +3,8 @@
 *.exe
 *.dll
 *.pdb
-*.userprefs
-*.cache
+*.nupkg
+*.snupkg
 bin/
 obj/
 Debug/
@@ -15,7 +15,6 @@ x86/
 # Dependencies
 packages/
 node_modules/
-.nuget/
 
 # Logs
 *.log
@@ -23,26 +22,44 @@ node_modules/
 # Environment
 .env
 .env.local
-*.env.*
+.env.*
 
 # Editors
-.vs/
-.vshost.exe
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# OS generated files
+# OS
 .DS_Store
 Thumbs.db
-desktop.ini
 
-# User-specific files
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
+# Testing
+coverage/
+htmlcov/
+.coverage
 
-# Temp files
-*.tmp
-*~
+# Compression
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
 ```

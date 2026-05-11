@@ -11,10 +11,12 @@
         Background="{StaticResource BackgroundBrush}">
 
     <Window.Resources>
-        <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="../../Resources/Colors.xaml"/>
-            <ResourceDictionary Source="../../Resources/Styles.xaml"/>
-        </ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Resources/Colors.xaml"/>
+                <ResourceDictionary Source="../../Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
 
     <Grid>
