@@ -17,6 +17,8 @@
                 <ResourceDictionary Source="../../Resources/Colors.xaml"/>
                 <ResourceDictionary Source="../../Resources/Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <converters:ScoreDisplayConverter x:Key="ScoreDisplayConverter"/>
+            <converters:StatusDisplayConverter x:Key="StatusDisplayConverter"/>
         </ResourceDictionary>
     </Window.Resources>
 
@@ -196,10 +198,6 @@
                               RowBackground="{StaticResource CardBrush}"
                               AlternatingRowBackground="#FFF8F9FA"
                               GridLinesVisibility="Horizontal">
-                        <DataGrid.Resources>
-                            <converters:ScoreDisplayConverter x:Key="ScoreDisplayConverter"/>
-                            <converters:StatusDisplayConverter x:Key="StatusDisplayConverter"/>
-                        </DataGrid.Resources>
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Ученик" Binding="{Binding User.FullName}" Width="*"/>
                             <DataGridTextColumn Header="Тест" Binding="{Binding Test.Title}" Width="*"/>
